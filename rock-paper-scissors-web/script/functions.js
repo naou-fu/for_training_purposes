@@ -1,8 +1,15 @@
-export const win = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper"
-};
+// Every function needed
+
+// Randomizes an array
+
+export function Randomize(array) {
+    let random = array[Math.floor(Math.random() * array.length)];
+    console.log("Randomized array: " + random);
+    return random;
+}
+
+
+//check is a username in in the correct format
 
 export function CheckUsername(username) {
     switch (username) {
@@ -19,3 +26,4 @@ export function CheckUsername(username) {
             return true;
     }
 }
+

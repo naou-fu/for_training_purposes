@@ -3,3 +3,4 @@ import {setupUsername} from "./username.js";
 
 setupUsername();
 Game();
+

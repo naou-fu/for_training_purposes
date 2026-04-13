@@ -1,9 +1,9 @@
-import {Game} from "./game.js";
-import {setupUsername, Wait} from "./functions.js";
+import { initializeEventListeners } from "./functions.js";
+import { initializeGame } from "./game.js";
 
-setupUsername();
-
-setTimeout(() => {
-    Game();
-}, 4000);
+// Initialize everything when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+    initializeEventListeners();
+    initializeGame();
+});
 

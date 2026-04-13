@@ -1,100 +1,134 @@
-import {all} from "./objects.js";
+import { greetings, win, challenges, BadGame, GoodGame, GoodBye } from "./objects.js";
 
-//delays the text
-
-export function Wait(text1, text2, text3, text4) {
+/**
+ * Delays text updates for a greeting sequence.
+ * @param {string} text1 - First part of greeting.
+ * @param {string} text2 - Second text.
+ * @param {string} text3 - Third text.
+ * @param {string} text4 - Fourth text.
+ */
+export function waitForGreeting(text1, text2, text3, text4) {
     setTimeout(() => {
-        document.getElementById("greeting").textContent = text1 + "player!";
+        const greetingEl = document.getElementById("greeting");
+        if (greetingEl) greetingEl.textContent = text1 + " player!";
     }, 3000);
     setTimeout(() => {
-        document.getElementById("greeting").textContent = text2;
+        const greetingEl = document.getElementById("greeting");
+        if (greetingEl) greetingEl.textContent = text2;
     }, 5000);
     setTimeout(() => {
-        document.getElementById("greeting").textContent = text3 ;
+        const greetingEl = document.getElementById("greeting");
+        if (greetingEl) greetingEl.textContent = text3;
     }, 7000);
     setTimeout(() => {
-        document.getElementById("greeting").textContent = text4 ;
+        const greetingEl = document.getElementById("greeting");
+        if (greetingEl) greetingEl.textContent = text4;
     }, 9000);
 }
 
-//hides blocks
-export function HideBlock(block1, block2, block3) {
-
-        document.getElementById(block1).style.display = "none";
-        console.log("Hiding block: " + block1);
-
-        document.getElementById(block2).style.display = "none";
-        console.log("Hiding block: " + block2);
-
-        document.getElementById(block3).style.display = "none";
-        console.log("Hiding block: " + block3);
+/**
+ * Hides multiple DOM elements.
+ * @param {...string} blockIds - IDs of elements to hide.
+ */
+export function hideBlocks(...blockIds) {
+    blockIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = "none";
+            console.log(`Hiding block: ${id}`);
+        }
+    });
 }
 
-//shows blocks
-export function ShowBlock(block1, block2, block3) {
-
-        document.getElementById(block1).style.display = "block";
-        console.log("Showing block: " + block1);
-        document.getElementById(block2).style.display = "block";
-        console.log("Showing block: " + block2);
-        document.getElementById(block3).style.display = "block";
-        console.log("Showing block: " + block3);
+/**
+ * Shows multiple DOM elements.
+ * @param {...string} blockIds - IDs of elements to show.
+ */
+export function showBlocks(...blockIds) {
+    blockIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.style.display = "block";
+            console.log(`Showing block: ${id}`);
+        }
+    });
 }
 
-//randomize the content of an array and return it
-export function Randomize(array) {
-    let random = array[Math.floor(Math.random() * array.length)];
-
+/**
+ * Returns a random element from an array.
+ * @param {Array} array - The array to randomize from.
+ * @returns {*} A random element.
+ */
+export function randomize(array) {
+    if (!Array.isArray(array) || array.length === 0) return null;
+    const random = array[Math.floor(Math.random() * array.length)];
+    console.log(`Randomized: ${random}`);
     return random;
 }
 
-//check if a username is in the correct format
-
-export function CheckUsername(username) {
-    switch (username) {
-        case null:
-            alert("Username cannot be null. Please enter a valid username.");
-            return false;
-        case "username":
-            alert("Username cannot be 'username'. Please choose a different username.");
-            return false;
-        case "youtube":
-            window.open("https://www.youtube.com/", "_blank");
-        default:
-            return true;
-        
+/**
+ * Validates a username.
+ * @param {string} username - The username to check.
+ * @returns {boolean} True if valid.
+ */
+export function checkUsername(username) {
+    if (!username || username.trim() === "") {
+        alert("Username cannot be empty. Please enter a valid username.");
+        return false;
     }
+    if (username.toLowerCase() === "username") {
+        alert("Username cannot be 'username'. Please choose a different username.");
+        return false;
+    }
+    if (username.toLowerCase() === "youtube") {
+        window.open("https://www.youtube.com/", "_blank");
+        return false; // Assuming invalid for game
+    }
+    return true;
 }
 
-//gets player choice and logs it to the console
-
-export function GetPlayButton(player) {
-    const buttons = document.querySelectorAll(".choice");
-
-    buttons.forEach(button =>  {
-        console.log(button)
-        button.addEventListener("click", (det) => {
-        console.log(det)
-
-        player = det.target.value;
-        
-        return player;
+/**
+ * Gets the player's choice from button clicks.
+ * @returns {string|null} The player's choice.
+ */
+export function getPlayerChoice() {
+    return new Promise((resolve) => {
+        const buttons = document.querySelectorAll(".choice");
+        const handleClick = (event) => {
+            const choice = event.target.value;
+            console.log(`Player chose: ${choice}`);
+            buttons.forEach(btn => btn.removeEventListener("click", handleClick));
+            resolve(choice);
+        };
+        buttons.forEach(button => button.addEventListener("click", handleClick));
     });
-});
 }
 
-
+/**
+ * Sets up the username input and validation.
+ */
 export function setupUsername() {
-
     const usernameInput = document.getElementById("username");
     const submitBtn = document.getElementById("btn-submit");
 
-    submitBtn.onclick = function() {
-        let nameValue = usernameInput.value;
-        
-        console.log("Username entered: " + nameValue);
-        
-        CheckUsername(nameValue);
-    };
-    return usernameInput;
+    if (!usernameInput || !submitBtn) return;
+
+    submitBtn.addEventListener("click", () => {
+        const nameValue = usernameInput.value.trim();
+        console.log(`Username entered: ${nameValue}`);
+
+        if (checkUsername(nameValue)) {
+            const nameEl = document.getElementById("name");
+            if (nameEl) nameEl.textContent = nameValue;
+            // Hide username input after valid submission
+            hideBlocks("label-username", "username", "btn-submit");
+        }
+    });
+}
+
+/**
+ * Initializes event listeners for game elements.
+ */
+export function initializeEventListeners() {
+    setupUsername();
 }

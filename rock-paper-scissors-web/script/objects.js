@@ -1,11 +1,11 @@
-export const win = {
+const win = {
     rock: "scissors",
     paper: "rock",
     scissors: "paper"
 }
 
 
-export const greetings = [
+const greetings = [
     "Hello, ",
     "Welcome, ",
     "Hi there, ",
@@ -14,7 +14,7 @@ export const greetings = [
     "Hey, ",
 ];
 
-export const challenges = [
+const challenges = [
     "i will beat you",
     "you don't stand a chance",
     "prepare to lose",
@@ -22,7 +22,7 @@ export const challenges = [
     "i'm ready for you",
 ]
 
-export const BadGame = [
+const BadGame = [
     "This game is rigged!",
     "I can't believe I lost!",
     "This is unfair!",
@@ -31,7 +31,7 @@ export const BadGame = [
     "My programmer must have made a mistake!",
     "I refuse to accept this outcome!",
 ]
-export const GoodGame = [
+const GoodGame = [
     "Good game!",
     "Well played!",
     "That was fun!",
@@ -41,7 +41,7 @@ export const GoodGame = [
     "Told you I was good at this game!"
 ]
 
-export const GoodBye = [
+const GoodBye = [
     "Goodbye, ",
     "See you later, ",
     "Farewell, ",
@@ -50,3 +50,5 @@ export const GoodBye = [
     "It was nice playing with you, ",
     "Lets play again soon, "
 ]
+
+export const all = {win, greetings, challenges, BadGame, GoodGame, GoodBye};

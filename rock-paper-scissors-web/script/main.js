@@ -1,6 +1,9 @@
 import {Game} from "./game.js";
-import {setupUsername} from "./username.js";
+import {setupUsername, Wait} from "./functions.js";
 
 setupUsername();
-Game();
+
+setTimeout(() => {
+    Game();
+}, 4000);
 

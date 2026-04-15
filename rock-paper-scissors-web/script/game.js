@@ -1,143 +1,62 @@
+import {all} from "./objects.js";
+import {Randomize, PrintAndWait} from "./functions.js";
+
+let ptries = 0;
+let ctries = 0;
 
 
-import { randomize, waitForGreeting, hideBlocks, showBlocks, getPlayerChoice } from "./functions.js";
-import { greetings, win, challenges, BadGame, GoodGame, GoodBye } from "./objects.js";
 
-/**
- * Represents the game state.
- */
-class GameState {
-    constructor() {
-        this.playerScore = 0;
-        this.computerScore = 0;
-        this.rounds = 0;
-    }
 
-    reset() {
-        this.playerScore = 0;
-        this.computerScore = 0;
-        this.rounds = 0;
-        this.updateScoreDisplay();
-    }
+//Game
+export function Game(){
+const buttons = document.querySelectorAll(".choice");
 
-    updateScoreDisplay() {
-        const myTriesEl = document.getElementById("my-tries");
-        const urTriesEl = document.getElementById("ur-tries");
-        if (myTriesEl) myTriesEl.textContent = `My tries: ${this.computerScore}`;
-        if (urTriesEl) urTriesEl.textContent = `Your tries: ${this.playerScore}`;
-    }
+    buttons.forEach(button =>  {
+        console.log(button)
+        button.addEventListener("click", (det) => {
 
-    incrementPlayer() {
-        this.playerScore++;
-        this.updateScoreDisplay();
-    }
+        let playerchoice = det.target.value;
+        let computerchoice = Randomize(all.choices);
+        
+        GameLogic(playerchoice, computerchoice);
+        PrintAndWait("choice", `You chose ${playerchoice}. I chose ${computerchoice}.`, 0);
 
-    incrementComputer() {
-        this.computerScore++;
-        this.updateScoreDisplay();
-    }
+        return playerchoice;
+
+    });
+});
 }
 
-const gameState = new GameState();
 
-/**
- * Determines the winner of a round.
- * @param {string} playerChoice - Player's choice.
- * @param {string} computerChoice - Computer's choice.
- * @returns {string} 'player', 'computer', or 'tie'.
- */
-function determineWinner(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) return 'tie';
-    if (win[playerChoice] === computerChoice) return 'player';
-    return 'computer';
-}
 
-/**
- * Displays the result of a round.
- * @param {string} result - The result message.
- */
-function displayResult(result) {
-    const resultEl = document.getElementById("result");
-    if (resultEl) resultEl.textContent = result;
-}
+//game logic
+function GameLogic(playerchoice, computerchoice) {
 
-/**
- * Plays a single round.
- */
-async function playRound() {
-    const playerChoice = await getPlayerChoice();
-    const computerChoice = randomize(Object.keys(win));
+    try {
+    if (playerchoice === computerchoice) {
+        document.getElementById("greeting").textContent = Randomize(all.NeutralGame);
 
-    console.log(`Computer chose: ${computerChoice}`);
+    } else if (computerchoice === all.win[playerchoice]) {
+        ptries++;
 
-    const winner = determineWinner(playerChoice, computerChoice);
+        document.getElementById("greeting").textContent = Randomize(all.GoodGame);
+        document.getElementById("player-results").textContent = `Your Tries: ${ptries}`;
+        
+        return ptries;
 
-    let resultMessage = "";
-    if (winner === 'player') {
-        gameState.incrementPlayer();
-        resultMessage = randomize(GoodGame);
-    } else if (winner === 'computer') {
-        gameState.incrementComputer();
-        resultMessage = randomize(BadGame);
     } else {
-        resultMessage = "It's a tie!";
+        ctries++;
+
+        document.getElementById("greeting").textContent = Randomize(all.BadGame);
+        document.getElementById("computer-results").textContent = `My Tries: ${ctries}`;
+
+        return ctries;
     }
 
-    displayResult(`${resultMessage} (You: ${playerChoice}, Computer: ${computerChoice})`);
-
-    gameState.rounds++;
-    if (gameState.rounds >= 5) {
-        endGame();
-    }
-}
-
-/**
- * Ends the game and shows final score.
- */
-function endGame() {
-    const finalScoreEl = document.getElementById("final-score");
-    let message = "";
-    if (gameState.playerScore > gameState.computerScore) {
-        message = randomize(GoodGame);
-    } else if (gameState.computerScore > gameState.playerScore) {
-        message = randomize(BadGame);
-    } else {
-        message = "It's a tie game!";
-    }
-
-    if (finalScoreEl) finalScoreEl.textContent = `Final Score - You: ${gameState.playerScore}, Computer: ${gameState.computerScore}. ${message}`;
-
-    // Show replay button
-    showBlocks("replay");
-}
-
-/**
- * Starts the game.
- */
-export function startGame() {
-    console.log("Starting game...");
-    gameState.reset();
-
-    // Hide initial elements, show game elements
-    hideBlocks("greeting", "name");
-    showBlocks("score-container", "btn-container", "result");
-
-    // Start rounds
-    for (let i = 0; i < 5; i++) {
-        playRound();
+    } catch (error) {
+        console.error("An error occurred in GameLogic: ", error);
+        document.getElementById("greeting").textContent = "An error occurred. Please try again.";
     }
 }
 
-/**
- * Initializes the game with greeting sequence.
- */
-export function initializeGame() {
-    const greeting = randomize(greetings);
-    const challenge = randomize(challenges);
 
-    waitForGreeting(greeting, challenge, "Let's play!", "Choose your move!");
-
-    setTimeout(() => {
-        startGame();
-    }, 10000); // After greeting sequence
-}

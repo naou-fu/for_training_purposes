@@ -5,6 +5,17 @@ const win = {
 }
 
 
+
+
+const choices = [
+    "rock",
+     "paper", 
+     "scissors"
+];
+
+
+
+
 const greetings = [
     "Hello, ",
     "Welcome, ",
@@ -14,6 +25,8 @@ const greetings = [
     "Hey, ",
 ];
 
+
+
 const challenges = [
     "i will beat you",
     "you don't stand a chance",
@@ -22,7 +35,9 @@ const challenges = [
     "i'm ready for you",
 ]
 
-const BadGame = [
+
+
+const  GoodGame = [
     "This game is rigged!",
     "I can't believe I lost!",
     "This is unfair!",
@@ -31,15 +46,34 @@ const BadGame = [
     "My programmer must have made a mistake!",
     "I refuse to accept this outcome!",
 ]
-const GoodGame = [
+
+
+
+
+const  BadGame = [
     "Good game!",
     "Well played!",
     "That was fun!",
     "I enjoyed that!",
-    "Let's play again soon!",
+    "Haah, lets gooo!",
     "GG BOYS!",
     "Told you I was good at this game!"
 ]
+
+
+
+
+const NeutralGame = [
+    "It's a tie!",
+    "We are evenly matched!",
+    "This is getting interesting!",
+    "I can't tell who's going to win!",
+    "This is a close game!",
+    "We are neck and neck!",
+    "This is anyone's game!"
+]
+
+
 
 const GoodBye = [
     "Goodbye, ",
@@ -51,4 +85,5 @@ const GoodBye = [
     "Lets play again soon, "
 ]
 
-export const all = {win, greetings, challenges, BadGame, GoodGame, GoodBye};
+
+export const all = {win, NeutralGame, choices,  greetings, challenges, BadGame, GoodGame, GoodBye};

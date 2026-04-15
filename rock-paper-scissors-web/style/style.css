@@ -31,10 +31,12 @@ label{
     text-align: center;
     margin-top: 20px;
     gap: 20px;
+    display: flex;
+    justify-content: center;
 }
 #greeting{
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2em;
     margin-top: 20px;
     text-shadow: cyan 0px 0px 20px;
 }
@@ -80,19 +82,19 @@ button:hover{
     justify-content: center;
     gap: 50px;
 }
-#score-container #ur-tries, #my-tries{
+#score-container #player-results , #computer-results{
     text-align: center;
     font-size: 1.5em;
     margin-top: 20px;
     text-shadow: cyan 0px 0px 20px;
 }
-#final-score{
+#choice{
     text-align: center;
-    font-size: 3em;
+    font-size: 1.5em;
     margin-top: 20px;
     text-shadow: rgb(0, 255, 60) 0px 0px 20px;
 }
-#replay{
+#exit-screen{
     display: block;
     margin: 20px auto;
     padding: 10px;

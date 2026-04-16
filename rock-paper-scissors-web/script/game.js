@@ -1,6 +1,7 @@
 import {all} from "./objects.js";
 import {Randomize, PrintAndWait} from "./functions.js";
 
+
 let ptries = 0;
 let ctries = 0;
 
@@ -41,7 +42,7 @@ function GameLogic(playerchoice, computerchoice) {
 
         document.getElementById("greeting").textContent = Randomize(all.GoodGame);
         document.getElementById("player-results").textContent = `Your Tries: ${ptries}`;
-        
+
         return ptries;
 
     } else {

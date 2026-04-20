@@ -10,7 +10,7 @@ import {Game} from "./game.js";
 
     
     HideBlock("btn1", "btn2", "btn3");
-    HideBlock("player-results", "computer-results","player-results", 0);
+    HideBlock("player-results", "computer-results","player-results");
 
     const usernameInput = document.getElementById("username");
     const submitBtn = document.getElementById("btn-submit");
@@ -18,11 +18,11 @@ import {Game} from "./game.js";
     submitBtn.onclick = function() {
       let nameValue = usernameInput.value;
 
-        ShowBlock("btn1", "btn2", "btn3", 4000);
-        ShowBlock("player-results", "computer-results", "player-results", 4000);
+        ShowBlock("btn1", "btn2", "btn3");
+        ShowBlock("player-results", "computer-results", "player-results");
         HideBlock("username", "btn-submit","label-username");
 
-
+//checks username
         console.log("Username entered: " + nameValue);
         switch (nameValue){
         case "":
@@ -39,14 +39,11 @@ import {Game} from "./game.js";
         default:
 
 
-
-
-
         PrintAndWait("greeting", `${Randomize(all.greetings)} ${nameValue}!`, 1000);
 
         PrintAndWait("greeting", `${Randomize(all.challenges)}`, 3000);
 
-
+//executes the game and the exit button
         Game();
         ExitGame();
 

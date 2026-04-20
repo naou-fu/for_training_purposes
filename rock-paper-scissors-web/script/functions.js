@@ -9,51 +9,53 @@ export function PrintAndWait(id, text, timewait) {
 }
 
 
+//creates a new block
 export function CreateBlock(blocktype, blockid, blocktext) {
 
+try{
     const block = document.createElement(blocktype);
-
     block.id = blockid;
     block.textContent = blocktext;
 
     document.body.appendChild(block);
     return block;
 }
+catch(error){
+    console.error("block not found")
+}
+
+}
 
 
 
 //hides blocks
-export function HideBlock(block1, block2, block3) {
-
-        document.getElementById(block1).style.display = "none";
-        console.log("Hiding block: " + block1);
-
-        document.getElementById(block2).style.display = "none";
-        console.log("Hiding block: " + block2);
-
-        document.getElementById(block3).style.display = "none";
-        console.log("Hiding block: " + block3);
-
-
+export function HideBlock(...blocks) {
+    blocks.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.style.display = "none";
+            console.log("Hiding block: " + id);
+        }
+        else{
+            console.error("Element not found" + id)
+        }
+    });
 }
 
 
 //shows blocks
-export function ShowBlock(block1, block2, block3, timewait) {
-    setTimeout(() => {
-        document.getElementById(block1).style.display = "block";
-        console.log("Showing block: " + block1);
-
-        document.getElementById(block2).style.display = "block";
-        console.log("Showing block: " + block2);
-
-        document.getElementById(block3).style.display = "block";
-        console.log("Showing block: " + block3);
-
-    }, timewait);
-        
-
+export function ShowBlock(...blocks) {
+    blocks.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.style.display = "block";
+            console.log("Showing block: " + id);
+        } else {
+            console.error("Element not found: " + id);
+        }
+    });
 }
+
 
 
 //exits the game
@@ -61,6 +63,7 @@ export function ExitGame() {
 
     CreateBlock("button", "exit-screen", "Exit Game");
     
+
     document.getElementById("exit-screen").onclick = function() {
     PrintAndWait("greeting", `${Randomize(all.GoodBye)} Redirecting to Google...`, 500);
         

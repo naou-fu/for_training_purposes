@@ -33,7 +33,7 @@ const buttons = document.querySelectorAll(".choice");
 //game logic
 function GameLogic(playerchoice, computerchoice) {
 
-    try {
+try {
     if (playerchoice === computerchoice) {
         document.getElementById("greeting").textContent = Randomize(all.NeutralGame);
 
@@ -54,10 +54,10 @@ function GameLogic(playerchoice, computerchoice) {
         return ctries;
     }
 
-    } catch (error) {
+} catch (error) {
         console.error("An error occurred in GameLogic: ", error);
         document.getElementById("greeting").textContent = "An error occurred. Please try again.";
-    }
+}
 }
 
 

@@ -1,3 +1,5 @@
+
+
 const win = {
     rock: "scissors",
     paper: "rock",
@@ -36,7 +38,7 @@ const challenges = [
 ]
 
 
-
+//good game for the player
 const  GoodGame = [
     "This game is rigged!",
     "I can't believe I lost!",
@@ -49,12 +51,12 @@ const  GoodGame = [
 
 
 
-
+//bad game for the player
 const  BadGame = [
     "Good game!",
     "Well played!",
     "That was fun!",
-    "I enjoyed that!",
+    "I'm unbeatable!",
     "Haah, lets gooo!",
     "GG BOYS!",
     "Told you I was good at this game!"
@@ -62,7 +64,7 @@ const  BadGame = [
 
 
 
-
+// a draw 
 const NeutralGame = [
     "It's a tie!",
     "We are evenly matched!",
@@ -86,4 +88,8 @@ const GoodBye = [
 ]
 
 
-export const all = {win, NeutralGame, choices,  greetings, challenges, BadGame, GoodGame, GoodBye};
+
+
+
+
+export const allObj = {win, NeutralGame, choices,  greetings, challenges, BadGame, GoodGame, GoodBye};

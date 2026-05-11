@@ -1,0 +1,267 @@
+body{
+    background-color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    color: rgb(136, 0, 0);
+    text-shadow: rgb(90, 0, 0) 3px 3px 20px;
+}
+#myh1{
+    color: rgb(121, 0, 0);
+    text-align: center;
+    font-size: 2em;
+}
+#username{
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 400px;
+    font-size: 1em;
+    border-radius: 1em;
+    box-shadow: rgb(147, 0, 0) 0px 0px 20px;
+}
+label{
+    display: block;
+    margin: 10px auto;
+    font-size: 1.2em;
+    text-align: center;
+
+}
+#btn-container{
+    text-align: center;
+    margin-top: 20px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+}
+#greeting{
+    text-align: center;
+    font-size: 2em;
+    margin-top: 20px;
+    text-shadow: rgb(117, 0, 12) 0px 0px 20px;
+}
+
+#btn-container #btn1{
+    width: 100px;
+    height: 100px;
+    font-size: 3em;
+    background-color: rgb(0, 0, 0);
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    animation: shaky1 25s infinite;
+    position: relative;
+}
+
+#btn-container #btn2{
+    width: 100px;
+    height: 100px;
+    font-size: 3em;
+    background-color: rgb(0, 0, 0);
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    animation: shaky2 25s infinite;
+    position: relative;
+}
+
+#btn-container #btn3{
+    width: 100px;
+    height: 100px;
+    font-size: 3em;
+    background-color: rgb(0, 0, 0);
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    animation: shaky3 25s infinite;
+    position: relative;
+}
+
+/* BUTTON 1 - WILD SCREEN CHAOS */
+@keyframes shaky1{
+    0%   { transform: translate(0px, 0px) rotate(0deg); background: red; }
+    4%   { transform: translate(120px, -180px) rotate(45deg); background: #ff0000; }
+    8%   { transform: translate(-240px, 120px) rotate(-60deg); background: #ff4500; }
+    12%  { transform: translate(350px, 240px) rotate(90deg); background: #ff6347; }
+    16%  { transform: translate(-300px, -240px) rotate(-120deg); background: blue; }
+    20%  { transform: translate(180px, -60px) rotate(180deg); background: #1e90ff; }
+    24%  { transform: translate(-120px, 300px) rotate(-200deg); background: #00bfff; }
+    28%  { transform: translate(350px, -120px) rotate(45deg); background: #ff0000; }
+    32%  { transform: translate(-350px, 180px) rotate(-90deg); background: yellow; }
+    36%  { transform: translate(240px, -300px) rotate(135deg); background: #ffd700; }
+    40%  { transform: translate(-180px, -350px) rotate(-180deg); background: #ffeb3b; }
+    44%  { transform: translate(300px, 120px) rotate(225deg); background: green; }
+    48%  { transform: translate(-350px, -180px) rotate(-250deg); background: #32cd32; }
+    52%  { transform: translate(60px, 350px) rotate(270deg); background: #00ff00; }
+    56%  { transform: translate(-60px, -300px) rotate(-300deg); background: purple; }
+    60%  { transform: translate(350px, 0px) rotate(315deg); background: #9370db; }
+    64%  { transform: translate(-350px, 240px) rotate(-350deg); background: #8a2be2; }
+    68%  { transform: translate(0px, -350px) rotate(400deg); background: orange; }
+    72%  { transform: translate(350px, -240px) rotate(-45deg); background: #ffa500; }
+    76%  { transform: translate(-240px, 350px) rotate(80deg); background: #ff8c00; }
+    80%  { transform: translate(180px, 350px) rotate(-130deg); background: cyan; }
+    84%  { transform: translate(-350px, -60px) rotate(160deg); background: #00ffff; }
+    88%  { transform: translate(120px, -350px) rotate(-200deg); background: #00ced1; }
+    92%  { transform: translate(-120px, -120px) rotate(250deg); background: red; }
+    96%  { transform: translate(60px, 180px) rotate(-300deg); background: #ff4444; }
+    100% { transform: translate(0px, 0px) rotate(0deg); background: red; }
+}
+
+/* BUTTON 2 - SUPER FAST SCREEN-TEARING CHAOS */
+@keyframes shaky2{
+    0%   { transform: translate(0px, 0px) rotate(0deg); background: red; }
+    2%   { transform: translate(90px, -150px) rotate(30deg); background: #ff3300; }
+    4%   { transform: translate(-210px, 90px) rotate(-50deg); background: #ff6600; }
+    6%   { transform: translate(330px, 210px) rotate(80deg); background: blue; }
+    8%   { transform: translate(-270px, -210px) rotate(-110deg); background: #2266ff; }
+    10%  { transform: translate(150px, -90px) rotate(140deg); background: #4488ff; }
+    12%  { transform: translate(-90px, 270px) rotate(-170deg); background: yellow; }
+    14%  { transform: translate(350px, -150px) rotate(200deg); background: #ffcc44; }
+    16%  { transform: translate(-330px, 150px) rotate(-230deg); background: #ffdd66; }
+    18%  { transform: translate(210px, -270px) rotate(260deg); background: green; }
+    20%  { transform: translate(-150px, -330px) rotate(-290deg); background: #33ff33; }
+    22%  { transform: translate(270px, 90px) rotate(320deg); background: #66ff66; }
+    24%  { transform: translate(-350px, -90px) rotate(-350deg); background: purple; }
+    26%  { transform: translate(30px, 330px) rotate(380deg); background: #cc44ff; }
+    28%  { transform: translate(-30px, -270px) rotate(-410deg); background: #dd88ff; }
+    30%  { transform: translate(350px, 30px) rotate(440deg); background: orange; }
+    32%  { transform: translate(-350px, 210px) rotate(-470deg); background: #ff8844; }
+    34%  { transform: translate(150px, -330px) rotate(500deg); background: #ffaa66; }
+    36%  { transform: translate(-210px, 330px) rotate(-530deg); background: cyan; }
+    38%  { transform: translate(330px, -30px) rotate(560deg); background: #44ffff; }
+    40%  { transform: translate(-330px, -150px) rotate(-590deg); background: #88ffff; }
+    42%  { transform: translate(90px, 350px) rotate(620deg); background: red; }
+    44%  { transform: translate(-90px, -350px) rotate(-650deg); background: #ff4444; }
+    46%  { transform: translate(350px, -210px) rotate(680deg); background: #ff8888; }
+    48%  { transform: translate(-350px, 270px) rotate(-710deg); background: #ff0000; }
+    50%  { transform: translate(0px, 350px) rotate(740deg); background: #ff2200; }
+    52%  { transform: translate(270px, -350px) rotate(-770deg); background: #ff4411; }
+    54%  { transform: translate(-270px, -30px) rotate(800deg); background: #ff6611; }
+    56%  { transform: translate(350px, 90px) rotate(-830deg); background: #ff8811; }
+    58%  { transform: translate(-350px, -90px) rotate(860deg); background: #ffaa11; }
+    60%  { transform: translate(60px, -350px) rotate(-890deg); background: #ffcc11; }
+    62%  { transform: translate(-60px, 350px) rotate(920deg); background: #ffee11; }
+    64%  { transform: translate(350px, -330px) rotate(-950deg); background: yellow; }
+    66%  { transform: translate(-350px, -210px) rotate(980deg); background: #ffff44; }
+    68%  { transform: translate(210px, 350px) rotate(-1010deg); background: #ffff66; }
+    70%  { transform: translate(-210px, -350px) rotate(1040deg); background: #ffff88; }
+    72%  { transform: translate(0px, -120px) rotate(-1070deg); background: #ffffaa; }
+    74%  { transform: translate(120px, 0px) rotate(1100deg); background: #ffffcc; }
+    76%  { transform: translate(-120px, 120px) rotate(-1130deg); background: green; }
+    78%  { transform: translate(300px, -350px) rotate(1160deg); background: #44ff44; }
+    80%  { transform: translate(-300px, -300px) rotate(-1190deg); background: #66ff66; }
+    82%  { transform: translate(350px, 350px) rotate(1220deg); background: #88ff88; }
+    84%  { transform: translate(-350px, 0px) rotate(-1250deg); background: #aaffaa; }
+    86%  { transform: translate(180px, -350px) rotate(1280deg); background: #ccffcc; }
+    88%  { transform: translate(-180px, 350px) rotate(-1310deg); background: #eeffee; }
+    90%  { transform: translate(0px, -300px) rotate(1340deg); background: cyan; }
+    92%  { transform: translate(0px, 300px) rotate(-1370deg); background: #00ffff; }
+    94%  { transform: translate(0px, 0px) rotate(1400deg); background: #44ffff; }
+    100% { transform: translate(0px, 0px) rotate(0deg); background: red; }
+}
+
+/* BUTTON 3 - AGGRESSIVE DIAGONAL SCREEN CHAOS */
+@keyframes shaky3{
+    0%   { transform: translate(0px, 0px) rotate(0deg); background: red; }
+    3%   { transform: translate(180px, -180px) rotate(45deg); background: #ff0000; }
+    6%   { transform: translate(-180px, 180px) rotate(-45deg); background: #ff2200; }
+    9%   { transform: translate(350px, -350px) rotate(90deg); background: #ff4400; }
+    12%  { transform: translate(-350px, 350px) rotate(-90deg); background: blue; }
+    15%  { transform: translate(350px, -350px) rotate(135deg); background: #2266ff; }
+    18%  { transform: translate(-350px, 350px) rotate(-135deg); background: #4488ff; }
+    21%  { transform: translate(350px, -350px) rotate(180deg); background: yellow; }
+    24%  { transform: translate(-350px, 350px) rotate(-180deg); background: #ffcc44; }
+    27%  { transform: translate(240px, -240px) rotate(225deg); background: #ffdd66; }
+    30%  { transform: translate(-240px, 240px) rotate(-225deg); background: green; }
+    33%  { transform: translate(350px, -350px) rotate(270deg); background: #33ff33; }
+    36%  { transform: translate(-350px, 350px) rotate(-270deg); background: #66ff66; }
+    39%  { transform: translate(350px, -350px) rotate(315deg); background: purple; }
+    42%  { transform: translate(-350px, 350px) rotate(-315deg); background: #cc44ff; }
+    45%  { transform: translate(300px, -300px) rotate(360deg); background: #dd88ff; }
+    48%  { transform: translate(-300px, 300px) rotate(-360deg); background: orange; }
+    51%  { transform: translate(350px, -350px) rotate(405deg); background: #ff8844; }
+    54%  { transform: translate(-350px, 350px) rotate(-405deg); background: #ffaa66; }
+    57%  { transform: translate(350px, -350px) rotate(450deg); background: cyan; }
+    60%  { transform: translate(-350px, 350px) rotate(-450deg); background: #44ffff; }
+    63%  { transform: translate(210px, -210px) rotate(495deg); background: #88ffff; }
+    66%  { transform: translate(-210px, 210px) rotate(-495deg); background: red; }
+    69%  { transform: translate(350px, -350px) rotate(540deg); background: #ff4444; }
+    72%  { transform: translate(-350px, 350px) rotate(-540deg); background: #ff8888; }
+    75%  { transform: translate(350px, -350px) rotate(585deg); background: #ffcccc; }
+    78%  { transform: translate(-350px, 350px) rotate(-585deg); background: yellow; }
+    81%  { transform: translate(150px, -150px) rotate(630deg); background: #ffff44; }
+    84%  { transform: translate(-150px, 150px) rotate(-630deg); background: green; }
+    87%  { transform: translate(330px, -330px) rotate(675deg); background: #44ff44; }
+    90%  { transform: translate(-330px, 330px) rotate(-675deg); background: purple; }
+    93%  { transform: translate(350px, -350px) rotate(720deg); background: #ff44ff; }
+    96%  { transform: translate(-350px, 350px) rotate(-720deg); background: cyan; }
+    100% { transform: translate(0px, 0px) rotate(0deg); background: red; }
+}
+button:hover{
+    cursor: pointer;
+    box-shadow: rgb(255, 255, 255) 0px 0px 20px;
+}
+#btn-submit{
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 100px;
+    font-size: 1em;
+    border-radius: 1em;
+    box-shadow: rgb(148, 0, 7) 0px 0px 20px;
+}
+#result{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-shadow: rgb(62, 0, 0) 0px 0px 20px;
+}
+.img{
+    display: block;
+    margin: 5px auto;
+    width: 400px;
+    height: 400px;
+    border-radius: 20%;
+    box-shadow: rgb(38, 0, 0) 0px 0px 20px;
+}
+#score-container{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+#score-container #player-results , #computer-results{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-shadow: rgb(159, 0, 0) 0px 0px 20px;
+}
+#choice{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-shadow: rgb(138, 0, 0) 0px 0px 20px;
+}
+#exit-screen{
+    background-color: black;
+    color: red;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 150px;
+    font-size: 1em;
+    border-radius: 1em;
+    box-shadow: rgb(255, 255, 255) 0px 0px 20px;
+    animation: shaky4 4s infinite;
+}
+
+@keyframes shaky4{
+    0%   { transform: translate(0px, 0px); background: red; }
+    10%   { transform: translate(100px, 100px); background: rgb(234, 255, 0); }
+    20%   { transform: translate(0px, -100px); background: rgb(0, 255, 17); }
+    30%   { transform: translate(100px, 200px); background: rgb(0, 102, 255); }
+    40%   { transform: translate(400px, 100px); background: rgb(183, 0, 255); }
+    50%   { transform: translate(-100px, -200px); background: rgb(255, 0, 0); }
+    60%   { transform: translate(300px, 0px); background: rgb(255, 251, 0); }
+    70%   { transform: translate(100px, -200px); background: rgb(55, 255, 0); }
+    80%   { transform: translate(200px, -200px); background: rgb(0, 34, 255); }
+    90%   { transform: translate(-400px, 0px); background: rgb(0, 234, 255); }
+    100%   { transform: translate(0px, 0px); background: rgb(255, 0, 212); }
+}

@@ -239,7 +239,7 @@ button:hover{
     margin-top: 20px;
     text-shadow: rgb(138, 0, 0) 0px 0px 20px;
 }
-#exit-screen{
+#click-me{
     background-color: black;
     color: red;
     display: block;

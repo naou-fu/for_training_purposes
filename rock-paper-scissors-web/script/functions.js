@@ -1,20 +1,22 @@
 import { allObj } from "./objects.js";
 
-
-//delays the text
 function PrintAndWait(id, text, timewait) {
     setTimeout(() => {
         document.getElementById(id).textContent = text;
-    }, timewait); // in millisecond
+    }, timewait);
 }
 
-
-//creates a new block
 function CreateBlock(blocktype, blockid, blocktext) {
     try{
+        const existing = document.getElementById(blockid);
+        if (existing) {
+            return existing;
+        }
         const block = document.createElement(blocktype);
         block.id = blockid;
-        block.textContent = blocktext;
+        if (blocktype.toLowerCase() !== "audio") {
+            block.textContent = blocktext;
+        }
         document.body.appendChild(block);
         return block;
     }
@@ -23,9 +25,6 @@ function CreateBlock(blocktype, blockid, blocktext) {
     }
 }
 
-
-
-//hides or shows blocks, 'none' = hide, 'block' = show
 function BlockVisiblity(display, ...blocks) {
     blocks.forEach(id => {
         const element = document.getElementById(id);
@@ -39,106 +38,85 @@ function BlockVisiblity(display, ...blocks) {
     });
 }
 
-
-
-//exits the game
 function ExitGame() {
-
     CreateBlock("button", "exit-screen", "Exit Game");
-    
-
     document.getElementById("exit-screen").onclick = function() {
     PrintAndWait("greeting", `${Randomize(allObj.GoodBye)} Redirecting to Google...`, 500);
-        
     setTimeout(() => {
         window.open("https://www.google.com/", "_parent");
     }, 3000);
     };
-
 }
 
-//randomize the content of an array and return it
 function Randomize(array) {
     let random = array[Math.floor(Math.random() * array.length)];
     return random;
 }
 
-function PointTakerBtn(ptries){
-    let remainingTries = ptries;
-
-    
-    document.getElementById('click-me').onclick = function(){
-            remainingTries--;
-            
-
-            
-            const beep = document.getElementById('beep');
-            beep.src = '../audio/beep.mp3';
-            beep.autoplay = true;
-            beep.load();
-            
-            document.getElementById("player-results").textContent = `Your Tries: ${remainingTries}`;
-            document.getElementById("computer-results").textContent = `Your Tries: ${computerTries}`;
-            console.log(remainingTries)
-            return remainingTries;
-            }
-            
-        }
-    
-function CountDown(){
-
+function CountDown(triesObj){
+    console.log("Starting countdown with player tries: " + triesObj.p + " and computer tries: " + triesObj.c);
     let count = 137;
-    const countdown = setInterval(() => {
-    count--;
-    
-    if (count < 0) {
-        clearInterval()
-        Def.PrintAndWait('greeting', 'unc you trippin', 0)
-
-        setTimeout(() =>{
-        window.open('https://youtu.be/GkHd1d_UVOE?si=Y-lviaI1XDX74CBT', '_self');
-        },3000)
-
-    }
     document.getElementById("myh1").textContent = count;
+
+    const countdown = setInterval(() => {
+        count--;
+        if (count > -1) {
+            document.getElementById("myh1").textContent = count;
+            return;
+        }
+
+        clearInterval(countdown);
+        CheckHardModeWinner(triesObj.p, triesObj.c);
+        BlockVisiblity('none', 'click-me', 'btn1', 'btn2', 'btn3');
 
     }, 1000);
 }
 
-
 function CreateHardModeAudio(){
-        Def.CreateBlock('audio', 'limbo', 'none');
-        const audio = document.getElementById('limbo');
-        audio.src = '../audio/trouble.mp3';
-        audio.autoplay = true;
-        audio.load();
-        document.querySelector("link").href = "../style/hard.css"; //changes the css style
+    Def.CreateBlock('audio', 'limbo', 'none');
+    const audio = document.getElementById('limbo');
+    audio.src = '../audio/trouble.mp3';
+    audio.autoplay = true;
+    audio.load();
+    document.querySelector("link").href = "../style/hard.css"; //changes the css style
 
 }
 
 
-function HarderGameset(){
-            document.getElementById("player-results").textContent = `Your Tries: ${ptries}`;
-            document.getElementById("computer-results").textContent = `My Tries: ${ctries}`;
-            Def.CreateBlock('button', 'click-me', 'Exit Game');
-            Def.CreateBlock('audio', 'beep', 'beep')
-            Def.CreateHardModeAudio();  
-            Def.BlockVisiblity('none', 'exit-screen', 'hard-ver');
-            Def.CountDown()
+function HarderGameset(ptries, ctries){
+    document.getElementById("player-results").textContent = `Your Tries: ${ptries}`;
+    document.getElementById("computer-results").textContent = `My Tries: ${ctries}`;
+    Def.CreateBlock('button', 'click-me', 'Click Me');
+    Def.CreateBlock('audio', 'beep', 'beep')
+    Def.CreateHardModeAudio();  
+    Def.BlockVisiblity('none', 'hard-ver', 'exit-screen');
 }
 
 
+function CheckHardModeWinner(ptries, ctries){
+    let playertries = ptries;
+    let cputries = ctries;
+
+    console.log("Checking winner with player tries: " + playertries + " and computer tries: " + cputries);
+    if (playertries === cputries) {
+        Def.PrintAndWait('greeting', 'It\'s a tie! But I win in harder mode, better luck next time!', 0)
+    }
+    else if (playertries > cputries && playertries >= 15){
+        Def.PrintAndWait('greeting', 'You win? Impossible!. You exceeded my expectations, Congratulations!', 0)
+    }
+    else {
+        Def.PrintAndWait('greeting', 'I Knew You Would Lose! Better luck next time!', 0)
+    }
+}
 
 export const Def = { 
-        Randomize,
-        ExitGame,
-        BlockVisiblity,
-        CreateBlock,
-        PrintAndWait,
-        CreateHardModeAudio,
-        PointTakerBtn,
-        CountDown,
-        HarderGameset    
-    
-    
-    }
+    Randomize,
+    ExitGame,
+    BlockVisiblity,
+    CreateBlock,
+    PrintAndWait,
+    CreateHardModeAudio,
+    CountDown,
+    HarderGameset,
+    CheckHardModeWinner    
+}

@@ -1,3 +1,5 @@
+//main script
+
 import {allObj} from "./objects.js";
 import {InitGame} from "./game.js";
 import {Def} from "./functions.js";

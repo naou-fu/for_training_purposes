@@ -1,3 +1,5 @@
+//game set
+
 import {allObj} from "./objects.js";
 import {Def} from "./functions.js";
 

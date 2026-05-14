@@ -1,3 +1,5 @@
+//function set
+
 import { allObj } from "./objects.js";
 
 function PrintAndWait(id, text, timewait) {

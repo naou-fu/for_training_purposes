@@ -1,3 +1,5 @@
+//objects set
+
 const win = {
     rock: "scissors",
     paper: "rock",

@@ -1,8 +1,8 @@
 //main script
 
-import {allObj} from "./objects.js";
-import {InitGame} from "./game.js";
-import {Def} from "./functions.js";
+import {allObj} from "./objects";
+import {InitGame} from "./game";
+import {Def} from "./functions";
 
 function validateUsername(name) {
     if (!name || name.trim() === "") {

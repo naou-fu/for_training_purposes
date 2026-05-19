@@ -1,18 +1,17 @@
 {
-  "name": "rock-paper-scissors-web",
+  "name": "rock-paprer-scissors-web",
   "version": "1.0.0",
-  "description": "A simple rock-paper-scissors game",
-  "main": "script/main.js",
+  "type": "module",
+  "main": "app.js",
   "scripts": {
-    "start": "npx http-server . -p 8080",
-    "lint": "npx eslint script/*.js",
-    "format": "npx prettier --write script/*.js templates/*.html style/*.css",
-    "test": "jest"
+    "start": "nodemon --watch . --ext js --env-file .env app.js",
+    "dev": "nodemon --env-file .env app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   },
   "devDependencies": {
-    "eslint": "^8.0.0",
-    "prettier": "^3.0.0",
-    "http-server": "^14.0.0",
-    "jest": "^29.0.0"
+    "node": "^22.22.3",
+    "nodemon": "^3.1.14"
   }
 }

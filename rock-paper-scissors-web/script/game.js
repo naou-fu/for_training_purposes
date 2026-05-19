@@ -1,7 +1,7 @@
 //game set
 
-import {allObj} from "./objects.js";
-import {Def} from "./functions.js";
+import {allObj} from "./objects";
+import {Def} from "./functions";
 
 let tries = {p: 0, c: 0};
 

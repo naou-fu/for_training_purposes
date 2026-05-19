@@ -1,6 +1,6 @@
 //function set
 
-import { allObj } from "./objects.js";
+import { allObj } from "./objects";
 
 function PrintAndWait(id, text, timewait) {
     setTimeout(() => {
@@ -80,7 +80,7 @@ function CreateHardModeAudio(){
     audio.src = '../audio/trouble.mp3';
     audio.autoplay = true;
     audio.load();
-    document.querySelector("link").href = "../style/hard.css"; //changes the css style
+    document.querySelector("link").href = "../style/hard"; //changes the css style
 
 }
 

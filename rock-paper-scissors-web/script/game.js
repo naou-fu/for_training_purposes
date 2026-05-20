@@ -1,7 +1,7 @@
 //game set
 
-import {allObj} from "./objects";
-import {Def} from "./functions";
+import {allObj} from "./objects.js";
+import {Def} from "./functions.js";
 
 let tries = {p: 0, c: 0};
 
@@ -121,7 +121,7 @@ function CreateCheckHardBtn(){
         console.log(tries.p);
         console.log("point taker working");
         const beep = document.getElementById('beep');
-        beep.src = '../audio/beep.mp3';
+        beep.src = '/beep.mp3';
         beep.autoplay = true;
         beep.load();
         }

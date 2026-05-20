@@ -1,0 +1,20 @@
+{
+    "gameData": {
+        "choices": ["rock", "paper", "scissors"],
+        "rules": {
+            "rock": "scissors",
+            "paper": "rock",
+            "scissors": "paper"
+        }
+    },
+    "users":[
+        {
+            "username": "lol",
+            "score": 100
+        },
+        {
+            "username": "man",
+            "score": 0
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 //function set
 
-import { allObj } from "./objects";
+import { allObj } from "./objects.js";
 
 function PrintAndWait(id, text, timewait) {
     setTimeout(() => {
@@ -77,10 +77,10 @@ function CountDown(triesObj){
 function CreateHardModeAudio(){
     Def.CreateBlock('audio', 'limbo', 'none');
     const audio = document.getElementById('limbo');
-    audio.src = '../audio/trouble.mp3';
+    audio.src = '/trouble.mp3';
     audio.autoplay = true;
     audio.load();
-    document.querySelector("link").href = "../style/hard"; //changes the css style
+    document.querySelector("link").href = "/hard.css"; //changes the css style
 
 }
 

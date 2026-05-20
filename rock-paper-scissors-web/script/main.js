@@ -1,10 +1,29 @@
 //main script
+import {allObj} from "./objects.js";
+import {InitGame} from "./game.js";
+import {Def} from "./functions.js";
 
-import {allObj} from "./objects";
-import {InitGame} from "./game";
-import {Def} from "./functions";
+console.log("Main script loaded successfully.");
+
+let users = null;
+fetch('/data')
+    .then(response => response.json())
+    .then(data => {
+        users = data.users;
+        console.log("Fetched users:", users);
+
+
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+    });
+
+
+
+ let exists = false;
 
 function validateUsername(name) {
+   
     if (!name || name.trim() === "") {
         window.alert("username cannot be empty");
         return false;
@@ -24,11 +43,19 @@ function validateUsername(name) {
             return false;
         }
     }
+    if(users.some(user => user.username === name)){
+        exists = true;
+        return exists;
+    }
     return true;
 }
 
 function initApp() {
     try {
+
+        console.log(bestScore);
+
+
         Def.BlockVisiblity('none',"btn1", "btn2", "btn3","player-results", "computer-results"); 
         const usernameInput = document.getElementById("username");
         const submitBtn = document.getElementById("btn-submit");
@@ -43,7 +70,13 @@ function initApp() {
 
             Def.BlockVisiblity('none', "username", "btn-submit", "label-username");
             Def.BlockVisiblity('block',"btn1", "btn2", "btn3","player-results", "computer-results");
-            Def.PrintAndWait("greeting", `${Def.Randomize(allObj.greetings)} ${nameValue}!`, 1000); // prints greetings within 1 sec
+            if (exists === true){
+                Def.PrintAndWait("greeting", `${Def.Randomize(allObj.welcomeback)} ${nameValue}!`, 1000);
+            }else{
+                Def.PrintAndWait("greeting", `${Def.Randomize(allObj.greetings)} ${nameValue}!`, 1000);
+            }
+
+            
             Def.PrintAndWait("greeting", `${Def.Randomize(allObj.challenges)}`, 3000); // prints chalenges within 3 sec
             
             InitGame();

@@ -18,6 +18,13 @@ const greetings = [
     "Howdy, ",
     "Hey, ",
 ];
+const welcomeback = [
+    "Welcome back,",
+    "Long time no see,",
+    "Nice to see you again,",
+    "Back for more,",
+    "How have you been,"
+]
 const challenges = [
     "i will beat you",
     "you don't stand a chance",
@@ -62,4 +69,4 @@ const GoodBye = [
     "Lets play again soon, "
 ]
 
-export const allObj = {win, NeutralGame, choices,  greetings, challenges, BadGame, GoodGame, GoodBye};
+export const allObj = {win, NeutralGame, choices,  greetings, challenges, BadGame, GoodGame, GoodBye, welcomeback};

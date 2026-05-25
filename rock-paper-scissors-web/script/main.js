@@ -27,7 +27,8 @@ fetch('/data')
 
 
 
- let exists = false;
+let exists = false;
+let currentUser = null;
 
 function validateUsername(name) {
    
@@ -103,6 +104,7 @@ function initApp() {
         submitBtn.addEventListener("click", () => {
             const nameValue = usernameInput.value.trim();
             if (!validateUsername(nameValue)) return;
+            currentUser = nameValue;
 
             Def.BlockVisiblity('none', "username", "btn-submit", "label-username");
             Def.BlockVisiblity('block',"btn1", "btn2", "btn3","player-results", "computer-results");
@@ -116,7 +118,8 @@ function initApp() {
             
             Def.PrintAndWait("greeting", `${Def.Randomize(allObj.challenges)}`, 3000); // prints chalenges within 3 sec
             
-            InitGame();
+
+            InitGame(currentUser);
             Def.ExitGame();
 
         });

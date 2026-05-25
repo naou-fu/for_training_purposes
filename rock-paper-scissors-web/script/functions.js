@@ -112,6 +112,7 @@ function CheckHardModeWinner(ptries, ctries){
     }
 }
 
+
 export const Def = { 
     Randomize,
     ExitGame,

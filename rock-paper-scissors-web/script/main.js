@@ -5,18 +5,25 @@ import {Def} from "./functions.js";
 
 console.log("Main script loaded successfully.");
 
-let users = null;
+
+// local cache for user data — initialize to safe empty arrays
+let users = { usernames: [], scores: [] };
+
 fetch('/data')
     .then(response => response.json())
     .then(data => {
-        users = data.users;
+        users = {
+            usernames: data.users.map(user => user.username),
+            scores: data.users.map(user => user.score)
+        };
         console.log("Fetched users:", users);
-
+        
 
     })
     .catch(error => {
         console.error("Error fetching data:", error);
     });
+
 
 
 
@@ -43,19 +50,48 @@ function validateUsername(name) {
             return false;
         }
     }
-    if(users.some(user => user.username === name)){
+    if(users && users.usernames.includes(name)){
         exists = true;
         return exists;
+    }else{
+        let score = 0;
+        NewUser(name);
     }
     return true;
 }
 
+function NewUser(name){
+    
+    fetch('/data',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: name,
+            score: 0
+        })
+    })
+
+    .then(response => response.json())
+    .then(data => {
+        console.log("User created:", data);
+        // Keep the local user cache in sync after creating a new user.
+        if (users) {
+            users.usernames.push(name);
+            users.scores.push(0);
+        }
+    })
+    .catch(error => {
+        console.error("Error creating user:", error);
+    });
+}
+
+
+
+
 function initApp() {
     try {
-
-        console.log(bestScore);
-
-
         Def.BlockVisiblity('none',"btn1", "btn2", "btn3","player-results", "computer-results"); 
         const usernameInput = document.getElementById("username");
         const submitBtn = document.getElementById("btn-submit");
@@ -72,6 +108,7 @@ function initApp() {
             Def.BlockVisiblity('block',"btn1", "btn2", "btn3","player-results", "computer-results");
             if (exists === true){
                 Def.PrintAndWait("greeting", `${Def.Randomize(allObj.welcomeback)} ${nameValue}!`, 1000);
+                Def.PrintAndWait("score", `${users.scores[users.usernames.indexOf(nameValue)]}`, 0);
             }else{
                 Def.PrintAndWait("greeting", `${Def.Randomize(allObj.greetings)} ${nameValue}!`, 1000);
             }

@@ -1,20 +1,32 @@
 {
-    "gameData": {
-        "choices": ["rock", "paper", "scissors"],
-        "rules": {
-            "rock": "scissors",
-            "paper": "rock",
-            "scissors": "paper"
-        }
+  "gameData": {
+    "choices": [
+      "rock",
+      "paper",
+      "scissors"
+    ],
+    "rules": {
+      "rock": "scissors",
+      "paper": "rock",
+      "scissors": "paper"
+    }
+  },
+  "users": [
+    {
+      "username": "lol",
+      "score": 0
     },
-    "users":[
-        {
-            "username": "lol",
-            "score": 100
-        },
-        {
-            "username": "man",
-            "score": 0
-        }
-    ]
+    {
+      "username": "man",
+      "score": 100
+    },
+    {
+      "username": "yoiyo",
+      "score": 50
+    },
+    {
+      "username": "pipo",
+      "score": 0
+    }
+  ]
 }

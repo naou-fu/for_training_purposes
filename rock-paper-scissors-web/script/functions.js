@@ -8,6 +8,7 @@ function PrintAndWait(id, text, timewait) {
     }, timewait);
 }
 
+
 function CreateBlock(blocktype, blockid, blocktext) {
     try{
         const existing = document.getElementById(blockid);

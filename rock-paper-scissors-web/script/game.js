@@ -1,12 +1,32 @@
+//game set
 import {allObj} from "./objects.js";
 import {Def} from "./functions.js";
 
 let tries = {p: 0, c: 0};
-
 let SwitchCondition = false;
 let normalgame = true;
+let currentUsername = null;
+let users = { usernames: [], scores: [] };
 
-export function InitGame(){
+fetch('/data')
+    .then(response => response.json())
+    .then(data => {
+        users = {
+            usernames: data.users.map(user => user.username),
+            scores: data.users.map(user => user.score)
+        };
+
+        
+
+    })
+    .catch(error => {
+        console.error("Error fetching data:", error);
+    });
+
+
+
+export function InitGame(username){
+    currentUsername = username;
     const buttons = document.querySelectorAll(".choice");
         //listens on every button
         buttons.forEach(button =>  {
@@ -73,6 +93,7 @@ function GameLogic(playerchoice, computerchoice) {
             tries.p++;
             document.getElementById("greeting").textContent = Def.Randomize(allObj.GoodGame);
             document.getElementById("player-results").textContent = `Your Tries: ${tries.p}`;
+            updateUserScore(currentUsername, tries.p);
             return tries.p;
         }else{
             tries.c++;
@@ -85,6 +106,27 @@ function GameLogic(playerchoice, computerchoice) {
         document.getElementById("greeting").textContent = "An error occurred. Please try again.";
     }
 }
+
+function updateUserScore(username, score) {
+    if (!username) return;
+    if (!score || score < users.scores[users.usernames.indexOf(username)]) return;
+
+    fetch('/data', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, score })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('User score updated:', data);
+    })
+    .catch(error => {
+        console.error('Error updating user score:', error);
+    });
+}
+
 
 function SwitchLogic(ptries,ctries){
     let playertries = ptries;
@@ -119,10 +161,12 @@ function CreateCheckHardBtn(){
         console.log(tries.p);
         console.log("point taker working");
         const beep = document.getElementById('beep');
-        beep.src = '../audio/beep.mp3';
+        beep.src = '/beep.mp3';
         beep.autoplay = true;
         beep.load();
         }
     });
 }
     
+
+export let score = tries.p;

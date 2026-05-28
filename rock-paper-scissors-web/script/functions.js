@@ -1,3 +1,5 @@
+//function set
+
 import { allObj } from "./objects.js";
 
 function PrintAndWait(id, text, timewait) {
@@ -5,6 +7,7 @@ function PrintAndWait(id, text, timewait) {
         document.getElementById(id).textContent = text;
     }, timewait);
 }
+
 
 function CreateBlock(blocktype, blockid, blocktext) {
     try{
@@ -75,10 +78,10 @@ function CountDown(triesObj){
 function CreateHardModeAudio(){
     Def.CreateBlock('audio', 'limbo', 'none');
     const audio = document.getElementById('limbo');
-    audio.src = '../audio/trouble.mp3';
+    audio.src = '/trouble.mp3';
     audio.autoplay = true;
     audio.load();
-    document.querySelector("link").href = "../style/hard.css"; //changes the css style
+    document.querySelector("link").href = "/hard.css"; //changes the css style
 
 }
 
@@ -108,6 +111,7 @@ function CheckHardModeWinner(ptries, ctries){
         Def.PrintAndWait('greeting', 'I Knew You Would Lose! Better luck next time!', 0)
     }
 }
+
 
 export const Def = { 
     Randomize,
